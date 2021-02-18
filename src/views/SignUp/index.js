@@ -8,7 +8,6 @@ function SignUp() {
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
   const [cpf, setCpf] = useState("");
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
