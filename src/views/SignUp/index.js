@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import * as S from "./styles";
 
 import api from "../../services/api";
@@ -11,9 +12,22 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  async function newUser() {
+    await api
+      .post('/user', {
+        firstName,
+        lastName,
+        phone,
+        cpf,
+        password,
+        email,
+      })
+      .then(alert("Usuário Cadastrado com sucesso!"));
+  }
+
   return (
     <S.Container>
-      <S.Title>Criar Conta</S.Title>
+      <S.Title>Cadastro</S.Title>
 
       <S.Content>
         <form>
@@ -72,11 +86,13 @@ function SignUp() {
             />
           </label>
           <label>
-            <button>Criar conta</button>
+            <button onClick={() => newUser()}>Cadastrar Usuário</button>
           </label>
 
           <label>
-            <button>Fazer Login</button>
+          <Link to={"/"}>
+            <button>Voltar</button>
+            </Link>
           </label>
         </form>
       </S.Content>
