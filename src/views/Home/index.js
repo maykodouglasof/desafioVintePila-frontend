@@ -1,73 +1,87 @@
-import React, { useState } from 'react';
-import * as S from './styles';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import * as S from "./styles";
 import { FiTrash2, FiEdit2 } from "react-icons/fi";
 
-import api from '../../services/api';
+import api from "../../services/api";
 
 function Home() {
+  const [users, setUsers] = useState([]);
 
-  const [user, setUser] = useState([]);
-  const [cpf, setCpf] = useState([]);
+  async function loadUsers() {
+    await api.get("/user").then((response) => {
+      setUsers(response.data);
+    });
+  }
+
+  async function handleDeleteUser(_id) {
+    const res = window.confirm("Deseja realmente remover este usuário?");
+    if (res == true) {
+      await api.delete(`/user/${_id}`).then(window.location.reload());
+    }
+    // try {
+    //     await api.delete(`user/${_id}` ,{
+    //         headers: {
+    //             Authorization: ongId,
+    //         }
+    //     });
+
+    //     setIncidents(incidents.filter(incident => incident.id !== id ));
+    // } catch (err) {
+    //     alert('Erro ao deletar caso, tente novamente.');
+    // }
+  }
+
+  useEffect(() => {
+    loadUsers();
+  }, []);
 
   return (
     <S.Container>
-
       <S.Content>
-        <strong>Pesquise pelo CPF</strong>
-        <S.SearchBox>
-          <form>
-            <input
-              type="text"
-              name="cpf"
-              placeholder="Procure pelo CPF..."
-              value={cpf}
-              onChange={(e) => setCpf(e.target.value)}
-            />
-            <S.Button>
-              Pesquisar
-            </S.Button>
-          </form>
-        </S.SearchBox>
-
-          <div>
-            <strong>Lista de Usuários</strong>
-
-            <ul className="recipe-table">
-              <table>
-                <thead>
+        <section>
+          <strong>Lista de Usuários</strong>
+          <S.Button>Adicionar Usuário</S.Button>
+          </section>
+          <ul>
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Sobrenome</th>
+                  <th>E-mail</th>
+                  <th>Telefone</th>
+                  <th>CPF</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.map((user) => (
                   <tr>
-                    <th>Nome</th>
-                    <th>Sobrenome</th>
-                    <th>E-mail</th>
-                    <th>Telefone</th>
-                    <th>CPF</th>
-                    <th>Ações</th>
-                  </tr>
-                </thead>
-                  <tbody>
-                    <tr>
-                      <td>Teste</td>
-                      <td>teste</td>
-                      <td>teste</td>
-                      <td>teste</td>
-                      <td>teste</td>
-                      <td>
+                    <td>{user.firstName}</td>
+                    <td>{user.lastName}</td>
+                    <td>{user.email}</td>
+                    <td>{user.phone}</td>
+                    <td>{user.cpf}</td>
+                    <td>
+                      <Link to={`/user/${user._id}`}>
                         <S.ButtonTable>
                           <FiEdit2 syze={20} color="#21ba45" />
                         </S.ButtonTable>
-                        <S.ButtonTable>
-                          <FiTrash2 syze={20} color="#21ba45" />
-                        </S.ButtonTable>
-                      </td>
-                    </tr>
-                  </tbody>
-              </table>
-            </ul>
-          </div>
-      </S.Content>
+                      </Link>
 
+                      <S.ButtonTable onClick={() => handleDeleteUser(user._id)}>
+                        <FiTrash2 syze={20} color="#21ba45" />
+                      </S.ButtonTable>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </ul>
+      </S.Content>
     </S.Container>
-  )
+  );
 }
 
 export default Home;

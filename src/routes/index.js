@@ -5,6 +5,7 @@ import Home from '../views/Home';
 import Login from '../views/Login';
 import SignUp from '../views/SignUp';
 import NewUser from '../views/NewUser';
+import User from '../views/User';
 
 export default function Routes(){
   return(
@@ -14,6 +15,7 @@ export default function Routes(){
         <Route path="/login" exact component={Login}/>
         <Route path="/signup" exact component={SignUp}/>
         <Route path="/newuser" exact component={NewUser}/>
+        <Route path="/user/:id" exact component={User}/>
       </Switch>
     </BrowserRouter>
   )

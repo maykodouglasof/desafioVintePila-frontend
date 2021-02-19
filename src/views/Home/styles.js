@@ -11,9 +11,11 @@ export const Content = styled.div`
   margin: 40px;
   align-items: center;
 
-  strong {
-    display: flex;
-    flex-direction: column;
+  section {
+    justify-content: space-between;
+  }
+
+  section strong {
     align-items: center;
     font-family: "Lato", sans-serif;
     font-style: bold;
@@ -40,33 +42,6 @@ export const Content = styled.div`
 
   tr:hover {
     background-color: #dad2d2;
-  }
-`;
-
-export const SearchBox = styled.div`
-  width: 100%;
-  margin-top: 10px;
-  padding: 20px 15px;
-  border-radius: 5px;
-  box-shadow: 1px 1px 1px 0.3px rbga(0, 0, 0, 0.2);
-  display: flex;
-
-  form {
-    flex: 1;
-    display: flex;
-  }
-
-  input {
-    height: 40px;
-    border: 0;
-    border-radius: 5px;
-    outline: 0;
-    font-size: 15px;
-    color: #000;
-    margin-right: 20px;
-    flex: 1;
-    padding: 0 10px;
-    background: rgb(240, 234, 234);
   }
 `;
 
