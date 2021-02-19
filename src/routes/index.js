@@ -20,10 +20,10 @@ export default function Routes(props) {
         <RouteHandler exact path="/signup">
           <SignUp />
         </RouteHandler>
-        <RouteHandler exact path="/newuser">
+        <RouteHandler private exact path="/newuser">
           <NewUser />
         </RouteHandler>
-        <RouteHandler exact path="/user/:id">
+        <RouteHandler private exact path="/user/:id">
           <User />
         </RouteHandler>
       </Switch>
