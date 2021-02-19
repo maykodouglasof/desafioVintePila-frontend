@@ -26,6 +26,20 @@ function User() {
     });
   }
 
+  async function updateUser(id) {
+    console.log(id)
+    await api
+      .put(`/user/${id}`, {
+        firstName,
+        lastName,
+        phone,
+        cpf,
+        password,
+        email,
+      })
+      .then();
+  }
+
   useEffect(() => {
     LoadUserDetails();
   }, []);
@@ -42,7 +56,6 @@ function User() {
               type="text"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              required
             />
           </label>
           <label>
@@ -51,7 +64,6 @@ function User() {
               type="text"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              required
             />
           </label>
           <label>
@@ -60,7 +72,6 @@ function User() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required
             />
           </label>
           <label>
@@ -69,7 +80,6 @@ function User() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              required
             />
           </label>
           <label>
@@ -78,7 +88,6 @@ function User() {
               type="text"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              required
             />
           </label>
           <label>
@@ -87,11 +96,10 @@ function User() {
               type="text"
               value={cpf}
               onChange={(e) => setCpf(e.target.value)}
-              required
             />
           </label>
           <label>
-            <button>Atualizar Usuário</button>
+            <button onClick={() => updateUser(id)}>Atualizar Usuário</button>
           </label>
 
           <label>
