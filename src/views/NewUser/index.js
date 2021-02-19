@@ -13,6 +13,19 @@ function NewUser() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  async function newUser() {
+    await api
+      .post('/user', {
+        firstName,
+        lastName,
+        phone,
+        cpf,
+        password,
+        email,
+      })
+      .then(alert("Usuário Cadastrado com sucesso!"));
+  }
+
   return (
     <S.Container>
       <S.Title>Cadastrar novo usuário</S.Title>
@@ -74,11 +87,13 @@ function NewUser() {
             />
           </label>
           <label>
-            <button>Cadastrar Usuário</button>
+            <button onClick={() => newUser()}>Cadastrar Usuário</button>
           </label>
 
           <label>
+          <Link to={"/home"}>
             <button>Voltar</button>
+            </Link>
           </label>
         </form>
       </S.Content>
