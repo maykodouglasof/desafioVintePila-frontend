@@ -40,7 +40,7 @@ function Home() {
     <S.Container>
       <S.Content>
         <section>
-          <strong>Lista de Usuários</strong>
+          <h1>Lista de Usuários</h1>
           <S.Button>Adicionar Usuário</S.Button>
           </section>
           <ul>

@@ -12,17 +12,16 @@ export const Content = styled.div`
   align-items: center;
 
   section {
+    width: 100%;
+    padding: 20px;
     justify-content: space-between;
   }
 
-  section strong {
-    align-items: center;
+  section h1 {
     font-family: "Lato", sans-serif;
     font-style: bold;
     font-size: 25px;
     color: #21ba45;
-    margin-top: 20px;
-    margin-bottom: 40px;
   }
 
   table {
