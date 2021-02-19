@@ -10,18 +10,13 @@ export const Content = styled.div`
   padding: 20px;
   margin: 40px;
   align-items: center;
+  justify-content: center;
 
   section {
+    display: flex;
     width: 100%;
-    padding: 20px;
     justify-content: space-between;
-  }
-
-  section h1 {
-    font-family: "Lato", sans-serif;
-    font-style: bold;
-    font-size: 25px;
-    color: #21ba45;
+    padding: 10px;
   }
 
   table {

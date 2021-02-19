@@ -19,17 +19,6 @@ function Home() {
     if (res == true) {
       await api.delete(`/user/${_id}`).then(window.location.reload());
     }
-    // try {
-    //     await api.delete(`user/${_id}` ,{
-    //         headers: {
-    //             Authorization: ongId,
-    //         }
-    //     });
-
-    //     setIncidents(incidents.filter(incident => incident.id !== id ));
-    // } catch (err) {
-    //     alert('Erro ao deletar caso, tente novamente.');
-    // }
   }
 
   useEffect(() => {
@@ -41,7 +30,9 @@ function Home() {
       <S.Content>
         <section>
           <h1>Lista de Usuários</h1>
+          <Link to={'/newuser'}>
           <S.Button>Adicionar Usuário</S.Button>
+          </Link>
           </section>
           <ul>
             <table>
