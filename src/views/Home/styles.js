@@ -15,8 +15,9 @@ export const Content = styled.div`
   section {
     display: flex;
     width: 100%;
-    justify-content: space-between;
     padding: 10px;
+    align-items: center;
+    margin-bottom: 10px;
   }
 
   table {
@@ -48,6 +49,7 @@ export const Button = styled.button`
   height: 40px;
   padding: 0 20px;
   cursor: pointer;
+  margin: 10px;
 `;
 
 export const ButtonTable = styled.button`

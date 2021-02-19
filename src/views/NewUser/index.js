@@ -14,6 +14,15 @@ function NewUser() {
   const [password, setPassword] = useState("");
 
   async function newUser() {
+    if(!firstName)
+      return alert("Você precisa informar o Nome")
+    else if(!lastName)
+      return alert("Você precisa informar o Sobrenome")
+      else if(!email)
+      return alert("Você precisa informar o Email")
+      else if(!password)
+      return alert("Você precisa informar a senha")
+
     await api
       .post('/user', {
         firstName,
@@ -91,7 +100,7 @@ function NewUser() {
           </label>
 
           <label>
-          <Link to={"/home"}>
+          <Link to={"/"}>
             <button>Voltar</button>
             </Link>
           </label>

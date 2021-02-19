@@ -21,6 +21,12 @@ function Home() {
     }
   }
 
+  async function handleLogout() {
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userEmail');
+    window.location.reload()
+  }
+
   useEffect(() => {
     loadUsers();
   }, []);
@@ -33,6 +39,7 @@ function Home() {
           <Link to={'/newuser'}>
           <S.Button>Adicionar Usuário</S.Button>
           </Link>
+          <S.Button onClick={() => handleLogout()}>Sair</S.Button>
           </section>
           <ul>
             <table>

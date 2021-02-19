@@ -1,22 +1,31 @@
-import React from 'react';
-import {BrowserRouter, Switch, Route} from'react-router-dom';
+import React from "react";
+import { Switch } from "react-router-dom";
+import RouteHandler from "../components/RouteHandler";
 
-import Home from '../views/Home';
-import Login from '../views/Login';
-import SignUp from '../views/SignUp';
-import NewUser from '../views/NewUser';
-import User from '../views/User';
+import Home from "../views/Home";
+import Login from "../views/Login";
+import SignUp from "../views/SignUp";
+import NewUser from "../views/NewUser";
+import User from "../views/User";
 
-export default function Routes(){
-  return(
-    <BrowserRouter>
+export default function Routes(props) {
+  return (
       <Switch>
-        <Route path="/home" exact component={Home}/>
-        <Route path="/" exact component={Login}/>
-        <Route path="/signup" exact component={SignUp}/>
-        <Route path="/newuser" exact component={NewUser}/>
-        <Route path="/user/:id" exact component={User}/>
+        <RouteHandler private exact path="/">
+          <Home />
+        </RouteHandler>
+        <RouteHandler exact path="/login">
+          <Login />
+        </RouteHandler>
+        <RouteHandler exact path="/signup">
+          <SignUp />
+        </RouteHandler>
+        <RouteHandler exact path="/newuser">
+          <NewUser />
+        </RouteHandler>
+        <RouteHandler exact path="/user/:id">
+          <User />
+        </RouteHandler>
       </Switch>
-    </BrowserRouter>
-  )
+  );
 }

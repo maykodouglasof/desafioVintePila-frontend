@@ -15,11 +15,10 @@ function Login() {
 
       try {
           const response = await api.post('/session', { email, password })
-          console.log(response)
           localStorage.setItem('userId', response.data._id);
           localStorage.setItem('userEmail', response.data.email);
 
-          history.push('Home');
+          history.push('/');
       } catch (err) {
           alert('Falha no login, tente novamente.');
       }
